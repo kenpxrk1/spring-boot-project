@@ -1,6 +1,11 @@
 server:
   port: 8000
 
+app:
+  enabled-sort-fields:
+    - price
+    - model
+
 spring:
   application:
     name: project

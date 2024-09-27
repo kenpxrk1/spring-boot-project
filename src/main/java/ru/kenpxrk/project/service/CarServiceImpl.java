@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 import ru.kenpxrk.project.model.Car;
 import ru.kenpxrk.project.repository.CarRepository;
 
+import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -18,5 +19,11 @@ public class CarServiceImpl implements CarService {
     @Override
     public List<Car> findAll(int count) {
         return repository.findAll(PageRequest.of(0, count)).toList();
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public List<Car> findAll() {
+        return repository.findAll();
     }
 }
