@@ -5,7 +5,5 @@ import ru.kenpxrk.project.model.Car;
 import java.util.List;
 
 public interface CarService {
-    List<Car> findAll(int count);
-
-    List<Car> findAll();
+    List<Car> findAll(Integer count, String sortBy);
 }
