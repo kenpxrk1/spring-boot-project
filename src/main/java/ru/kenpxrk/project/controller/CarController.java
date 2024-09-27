@@ -6,17 +6,18 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import ru.kenpxrk.project.model.Car;
-import ru.kenpxrk.project.service.CarServiceImpl;
+import ru.kenpxrk.project.service.CarService;
 
 import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
 public class CarController {
-    private final CarServiceImpl carService;
+    private final CarService carService;
 
     @GetMapping("/cars")
-    public String getCars(@RequestParam(value = "count", required = false) Integer count, @RequestParam(value = "sortBy", required = false) String sortBy, Model model) {
+    public String getCars(@RequestParam(value = "count", required = false) Integer count,
+                          @RequestParam(value = "sortBy", required = false) String sortBy, Model model) {
 
         List<Car> cars = carService.findAll(count, sortBy);
 

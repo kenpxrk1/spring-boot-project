@@ -1,7 +1,6 @@
 package ru.kenpxrk.project.service;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -42,7 +41,7 @@ public class CarServiceImpl implements CarService {
         List<Car> cars;
 
         if (count != null) {
-            cars = repository.findAll(PageRequest.of(0, count)).toList();
+            cars = repository.findAll(count);
         } else {
             cars = repository.findAll();
         }
