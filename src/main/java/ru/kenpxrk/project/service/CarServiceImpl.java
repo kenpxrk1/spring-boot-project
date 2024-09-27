@@ -48,7 +48,7 @@ public class CarServiceImpl implements CarService {
         }
 
         if (sortBy != null) {
-            cars.stream().sorted(getComparator(sortBy)).collect(Collectors.toList());
+            cars = cars.stream().sorted(getComparator(sortBy)).collect(Collectors.toList());
         }
 
         return cars;
