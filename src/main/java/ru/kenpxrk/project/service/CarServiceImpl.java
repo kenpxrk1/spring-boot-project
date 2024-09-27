@@ -7,7 +7,6 @@ import org.springframework.transaction.annotation.Transactional;
 import ru.kenpxrk.project.model.Car;
 import ru.kenpxrk.project.repository.CarRepository;
 
-import java.util.Comparator;
 import java.util.List;
 
 @Service

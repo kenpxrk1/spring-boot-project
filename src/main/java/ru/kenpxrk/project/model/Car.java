@@ -37,8 +37,8 @@ public class Car {
     @Column(name = "price", nullable = false)
     private Long price;
 
-    public static Comparator<Car> getComparator(String sortBy){
-        switch (sortBy){
+    public static Comparator<Car> getComparator(String sortBy) {
+        switch (sortBy) {
             case "model":
                 return Comparator.comparing(Car::getModel);
             case "color":
