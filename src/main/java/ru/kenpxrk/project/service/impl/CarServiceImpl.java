@@ -40,13 +40,8 @@ public class CarServiceImpl implements CarService {
         if (sortBy != null && !config.getEnabledSortFields().contains(sortBy)) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
-        List<Car> cars;
 
-        if (count != null) {
-            cars = repository.findAll(count);
-        } else {
-            cars = repository.findAll();
-        }
+        List<Car> cars = (count == null) ? repository.findAll() : repository.findAll(count);
 
         if (sortBy != null) {
             cars = cars.stream().sorted(getComparator(sortBy)).collect(Collectors.toList());
