@@ -6,6 +6,15 @@ app:
     - price
     - color
 
+loan:
+  minimalIncome: 40000
+  minimalCarPrice: 1000000
+  maxAnnualIncomeLoanAmount: 0.5
+  maxCarPriceLoanAmount: 0.3
+  income-api: https://66055cd12ca9478ea1801f2e.mockapi.io/api/users/income
+
+
+
 spring:
   application:
     name: project

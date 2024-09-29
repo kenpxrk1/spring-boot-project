@@ -1,4 +1,4 @@
-package ru.kenpxrk.project.service;
+package ru.kenpxrk.project.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -8,9 +8,11 @@ import org.springframework.web.server.ResponseStatusException;
 import ru.kenpxrk.project.config.AppConfig;
 import ru.kenpxrk.project.model.Car;
 import ru.kenpxrk.project.repository.CarRepository;
+import ru.kenpxrk.project.service.CarService;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -51,5 +53,12 @@ public class CarServiceImpl implements CarService {
         }
 
         return cars;
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public Car getCarByUserId(Long userId) {
+        Optional<Car> car = repository.findCarByUserId(userId);
+        return car.orElse(null);
     }
 }
