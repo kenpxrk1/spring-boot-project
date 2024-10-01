@@ -1,11 +1,11 @@
 package ru.kenpxrk.project.service;
 
-import ru.kenpxrk.project.model.Car;
+import ru.kenpxrk.project.model.CarEntity;
 
 import java.util.List;
 
 public interface CarService {
-    List<Car> findAll(Integer count, String sortBy);
+    List<CarEntity> findAll(Integer count, String sortBy);
 
-    Car getCarByUserId(Long userId);
+    CarEntity getCarByUserId(Long userId);
 }

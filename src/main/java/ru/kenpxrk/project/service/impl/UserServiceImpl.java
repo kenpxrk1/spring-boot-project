@@ -5,7 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
-import ru.kenpxrk.project.model.User;
+import ru.kenpxrk.project.model.UserEntity;
 import ru.kenpxrk.project.repository.UserRepository;
 import ru.kenpxrk.project.service.UserService;
 
@@ -20,14 +20,14 @@ public class UserServiceImpl implements UserService {
 
     @Transactional(readOnly = true)
     @Override
-    public List<User> getUsers() {
+    public List<UserEntity> getUsers() {
         return userRepository.findAll();
     }
 
     @Transactional(readOnly = true)
     @Override
-    public User getUserById(Long id) {
-        Optional<User> user = userRepository.findById(id);
+    public UserEntity getUserById(Long id) {
+        Optional<UserEntity> user = userRepository.findById(id);
         if (user.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }

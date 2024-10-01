@@ -14,7 +14,6 @@ loan:
   income-api: https://66055cd12ca9478ea1801f2e.mockapi.io/api/users/income
 
 
-
 spring:
   application:
     name: project
@@ -27,3 +26,7 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+
+income-client:
+  enable: true
+  api: https://66055cd12ca9478ea1801f2e.mockapi.io/api/users/income

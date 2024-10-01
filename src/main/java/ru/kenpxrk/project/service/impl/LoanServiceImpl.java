@@ -6,11 +6,11 @@ import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import ru.kenpxrk.project.client.IncomeClient;
-import ru.kenpxrk.project.client.IncomeData;
-import ru.kenpxrk.project.model.Car;
+import ru.kenpxrk.project.model.CarEntity;
 import ru.kenpxrk.project.service.CarService;
 import ru.kenpxrk.project.service.LoanService;
+import ru.kenpxrk.income.client.IncomeClient;
+import ru.kenpxrk.income.client.IncomeDTO;
 
 
 @Slf4j
@@ -19,8 +19,6 @@ import ru.kenpxrk.project.service.LoanService;
 @Setter
 @RequiredArgsConstructor
 public class LoanServiceImpl implements LoanService {
-    private final CarService carService;
-    private final IncomeClient incomeClient;
 
     @Value("${loan.minimalIncome}")
     private int MINIMAL_INCOME;
@@ -32,21 +30,23 @@ public class LoanServiceImpl implements LoanService {
     private double MAX_ANNUAL_INCOME_LOAN_AMOUNT;
 
     @Value("${loan.maxCarPriceLoanAmount}")
-    private double MAX_CAR_PRICE_LOAN_AMOUNT;
 
+    private double MAX_CAR_PRICE_LOAN_AMOUNT;
+    private final CarService carService;
+    private final IncomeClient incomeClient;
 
     @Override
     public double getLoanAmount(Long userId) {
         int userIncome = incomeClient.getUserIncomes()
                 .stream()
                 .filter(incomeData -> incomeData.getId() == userId)
-                .map(IncomeData::getIncome)
+                .map(IncomeDTO::getIncome)
                 .findFirst()
                 .orElse(0);
 
         int userYearIncome = userIncome * 12;
 
-        Car userCar = carService.getCarByUserId(userId);
+        CarEntity userCar = carService.getCarByUserId(userId);
         Long userCarPrice = (userCar == null) ? null : userCar.getPrice();
 
         double loanAmountByIncomes = getLoanAmountByIncomes(userYearIncome);

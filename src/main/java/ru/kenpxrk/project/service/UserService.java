@@ -1,11 +1,11 @@
 package ru.kenpxrk.project.service;
 
-import ru.kenpxrk.project.model.User;
+import ru.kenpxrk.project.model.UserEntity;
 
 import java.util.List;
 
 public interface UserService {
-    List<User> getUsers();
+    List<UserEntity> getUsers();
 
-    User getUserById(Long id);
+    UserEntity getUserById(Long id);
 }
