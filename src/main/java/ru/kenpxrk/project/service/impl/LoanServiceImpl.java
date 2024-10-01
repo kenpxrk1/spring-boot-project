@@ -6,11 +6,11 @@ import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import ru.kenpxrk.income.client.IncomeClient;
+import ru.kenpxrk.income.client.IncomeDTO;
 import ru.kenpxrk.project.model.CarEntity;
 import ru.kenpxrk.project.service.CarService;
 import ru.kenpxrk.project.service.LoanService;
-import ru.kenpxrk.income.client.IncomeClient;
-import ru.kenpxrk.income.client.IncomeDTO;
 
 
 @Slf4j
@@ -30,8 +30,8 @@ public class LoanServiceImpl implements LoanService {
     private double MAX_ANNUAL_INCOME_LOAN_AMOUNT;
 
     @Value("${loan.maxCarPriceLoanAmount}")
-
     private double MAX_CAR_PRICE_LOAN_AMOUNT;
+
     private final CarService carService;
     private final IncomeClient incomeClient;
 

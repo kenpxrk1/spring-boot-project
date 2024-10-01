@@ -14,6 +14,6 @@ public interface CarRepository extends JpaRepository<CarEntity, Long> {
     @Query(value = "SELECT * FROM cars LIMIT :count", nativeQuery = true)
     List<CarEntity> findAll(@Param("count") int count);
 
-    @Query(value = "SELECT u.car FROM User u WHERE u.id = :userId")
+    @Query(value = "SELECT u.car FROM UserEntity u WHERE u.id = :userId")
     Optional<CarEntity> findCarByUserId(@Param("userId") Long id);
 }
